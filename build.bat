@@ -1,0 +1,1 @@
+g++ -O3 -static-libgcc -static-libstdc++ -o ./target/main ./src/main.cpp -I./includes -L./libs -lglfw3 ./libs/glad.c -lassimp -lz -lgdi32

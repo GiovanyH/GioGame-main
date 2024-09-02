@@ -16,8 +16,10 @@ public:
     glm::mat4 get_global_transformation() const;
     void set_global_transformation(glm::mat4 global_transformation) const;
 
+    std::vector<mesh_t> get_geometries();
+
     void add_child(node* child);
-    void add_geometry(const mesh_t& geometry);
+    void add_geometry(const mesh_t *geometry);
     void update(float delta_time);
 private:
     std::string m_name;
@@ -54,13 +56,17 @@ void node::set_global_transformation(glm::mat4 global_transformation) const {
     m_global_transformation = global_transformation;
 }
 
+std::vector<mesh_t> node::get_geometries() {
+    return m_geometries;
+}
+
 void node::add_child(node* child) {
     child->m_parent = this;
     m_children.push_back(child);
 }
 
-void node::add_geometry(const mesh_t& geometry) {
-    m_geometries.push_back(geometry);
+void node::add_geometry(const mesh_t *geometry) {
+    m_geometries.push_back(*geometry);
 }
 
 void node::update(float delta_time) {

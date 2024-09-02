@@ -18,7 +18,7 @@ window_t *main_window;
 
 */
 
-std::vector<object_t*> game_objects;
+std::vector<node*> game_objects;
 
 /*
 
@@ -98,7 +98,7 @@ void update() {
     objectTransform = glm::translate(objectTransform, glm::vec3(-0.2f, 0.0f, -0.2f)); // offset
 
     // Set the object's transformation matrix
-    game_objects[1]->model = objectTransform;
+    game_objects[1]->set_global_transformation(objectTransform);
 }
 
 
@@ -108,7 +108,7 @@ void render() {
                                  main_camera->position + get_camera_forward_vector(main_camera), 
                                  glm::vec3(0.0f, 1.0f, 0.0f));
 
-    for (object_t *object : game_objects) {
+    for (node *object : game_objects) {
         render_object(object, view, projection);
     }
 }

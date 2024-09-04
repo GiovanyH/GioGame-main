@@ -3,6 +3,7 @@
 #include <vector>
 
 #include "renderer.hpp"
+#include "skinned_mesh.hpp"
 
 #include <glm/mat4x4.hpp>
 #include <glm/ext/matrix_clip_space.hpp>
